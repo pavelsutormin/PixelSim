@@ -2,7 +2,8 @@ package org.sutormin.pixelsim;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PixelContainer {
     private List<GameObject> gameObjectList;
@@ -28,13 +29,13 @@ public class PixelContainer {
     }
 
     public void updateAll() {
-        for (GameObject gameObject: gameObjectList) {
+        for (GameObject gameObject : gameObjectList) {
             gameObject.update(this);
         }
     }
 
     public void drawAll(SpriteBatch batch) {
-        for (GameObject gameObject: gameObjectList) {
+        for (GameObject gameObject : gameObjectList) {
             gameObject.draw(batch);
         }
     }

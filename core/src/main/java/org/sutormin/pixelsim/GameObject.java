@@ -1,7 +1,5 @@
 package org.sutormin.pixelsim;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -35,11 +33,11 @@ public class GameObject {
         this.pos[0] += this.vel[0];
         this.pos[1] += this.vel[1];
 
-        for (GameObject gameObject: pixelContainer.getGameObjectList()) {
-            if (Utils.isCollidingWithVelocity(this, gameObject)) {
+        for (GameObject gameObject : pixelContainer.getGameObjectList()) {
+            if (gameObject != this && Utils.isColliding(this, gameObject)) {
                 this.pos[0] -= this.vel[0];
-                this.pos[1] -= this.vel[1];
                 this.vel[0] = -this.vel[0] / 2;
+                this.pos[1] -= this.vel[1];
                 this.vel[1] = -this.vel[1] / 2;
             }
         }

@@ -3,7 +3,9 @@ package org.sutormin.pixelsim;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.*;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
 
@@ -28,7 +30,7 @@ public class GameScreen extends ScreenAdapter {
         HUDCamera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         bounds = new Bounds(Float.NEGATIVE_INFINITY, 0, Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY);
         pixelContainer = new PixelContainer();
-        player = new GameObject(new double[] {500, 500}, new double[] {0, 0},
+        player = new GameObject(new double[]{500, 500}, new double[]{0, 0},
             30, 30, new Texture("textures/player.png"), bounds);
         camera.position.set(500, 500, 0);
         pixelContainer.addGameObject(player);
@@ -63,8 +65,8 @@ public class GameScreen extends ScreenAdapter {
             float posX = Gdx.input.getX();
             float posY = Gdx.input.getY();
             Vector3 posInGame = camera.unproject(new Vector3(posX, posY, 0));
-            pixelContainer.addGameObject(new GameObject(new double[] {posInGame.x, posInGame.y}, new double[] {0, 0},
-                20, 20, new Texture("textures/background.png"), bounds));
+            pixelContainer.addGameObject(new GameObject(new double[]{posInGame.x, posInGame.y}, new double[]{0, 0},
+                20, 20, new Texture("textures/player.png"), bounds));
         }
 
         pixelContainer.updateAll();
@@ -113,7 +115,8 @@ public class GameScreen extends ScreenAdapter {
     }
 
     @Override
-    public void hide() {}
+    public void hide() {
+    }
 
     private void drawText(String text) {
         String[] textLines = text.split("\n");
